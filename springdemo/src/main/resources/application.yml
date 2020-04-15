@@ -1,0 +1,47 @@
+server:
+    port: 8080 #端口号
+    context-path: /springboot
+spring :
+    datasource: #数据库连接（mysql）
+        url: jdbc:mysql://localhost:3306/user?useSSL=true
+        username: root
+        password: root
+        type: com.alibaba.druid.pool.DruidDataSource #使用druid数据源
+        driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+        hibernate:
+           ddl-auto: update #根据实体类自动更新数据库表
+        show-sql: true  #日志中显示sql语句
+        properties: 
+           hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+    servlet:
+       multipart:
+         max-file-size: 20MB
+         max-request-size: 30MB
+    tomcat:
+       uri-encoding: UTF-8
+       max-threads: 1000
+       min-spare-threads: 30
+    connection-timeout: 5000ms  
+    jackson:
+      time-zone: GMT+8
+      date-format: yyyy-MM-dd HH:mm:ss  
+                        
+#minio配置 url、accessKey、secretAccessKey
+springboot:
+   minio:
+      url: http://127.0.0.1:9000  #Minio访问路径地址
+      accessKey: P6SL3H5RQQGFYC2M2TP3 # Minio登录账号
+      secretAccessKey: 6Hq0qYhbIgONMt5fTx7tNYOEra6xfG6iENJuhT6T # Minio登录密码
+      buckets: tempfile,testfile #创建文件存储文件夹
+      connectTimeout: 10 # 连接超时时间
+      writeTimeout: 10 # 写入超时时间
+      readTimeout: 60 # 读取超时时间
+
+configs:
+    #文件保存临时路径
+    path: E:/file
+   
+
+                
